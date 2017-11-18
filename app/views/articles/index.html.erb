@@ -1,0 +1,37 @@
+
+<h1>Articulos</h1>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @articles.each do|article| %>
+        <tr>
+            <td><%= article.id%></td>
+            <td><%= article.nombre %></td>
+            <td><%= article.precio %></td>
+            <td><%= link_to "Eliminar",article,method: :delete%></td>
+
+        </tr>
+        <%end%>
+                <!--Donde cramos columna por cada onjeto agregamos unos link
+                ,ademas resive el parametro del id clinete
+                para coñocar las url colocamos unos tag !-->
+    </tbody>
+</table>
+<div style="width:7%;margin:0%;">
+    <div   class="field"> 
+        <div class=" btn be-red white ">
+            <%= link_to "Nuevo",new_article_path%>
+        </div>
+    </div>
+</div>
+
+
+    
+
