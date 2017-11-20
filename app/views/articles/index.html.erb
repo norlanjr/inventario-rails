@@ -5,7 +5,10 @@
         <tr>
             <th>#</th>
             <th>Nombre</th>
+            <th>Descripcion</th>
             <th>Precio</th>
+            <th>Precio2</th>
+            <th>Costo</th>
             <th>Acciones</th>
         </tr>
     </thead>
@@ -14,8 +17,15 @@
         <tr>
             <td><%= article.id%></td>
             <td><%= article.nombre %></td>
+            <td><%= article.descripcion %></td>
             <td><%= article.precio %></td>
-            <td><%= link_to "Eliminar",article,method: :delete%></td>
+            <td><%= article.precio2 %></td>
+            <td><%= article.costo %></td>
+            <td> 
+                <button type="button" class="btn btn-danger"><%= link_to "Eliminar",article,method: :delete%></button>
+                <button type="button" class="btn btn-danger"><%= link_to "Editar",edit_article_path(article.id)%></button>
+            </td>
+             
 
         </tr>
         <%end%>
