@@ -1,38 +1,32 @@
 
 
 <form>
-    <h1>Articulo Creado </h1>
+    <h1 style="margin-left:25%;" >Proveedor Creado </h1>
     <div class="form-group">
         <div style="width:80%;margin:0% auto;">
             <h3>Nombre:</h3>
             <li class="list-group-item">
-                <%= @article.nombre%>
+                <%= @provider.nombre%>
             </li>
             
         </div>
         <div class="form-group" style="width:80%;margin:0% auto;">
-            <h3>Descripcion:</h3>
+            <h3>Telefono:</h3>
             <li class="list-group-item">
-                <%= @article.descripcion%>
+                <%= @provider.telefono%>
             </li>
            
         </div>
         <div style="width:80%;margin:0% auto;">
-            <h3 >Precio:</h3>
+            <h3 >Empresa:</h3>
             <li class="list-group-item">
-                <%= @article.precio%>
+                <%= @provider.empresa%>
             </li>
         </div>
         <div style="width:80%;margin:0% auto;">
-            <h3>Precio2:</h3>
+            <h3>Ruc:</h3>
             <li class="list-group-item">
-                <%= @article.precio2%>
-            </li>
-        </div>
-        <div style="width:80%;margin:0% auto;">
-            <h3>Costo:</h3>
-            <li class="list-group-item">
-                <%= @article.costo%>
+                <%= @provider.ruc_empresa%>
             </li>
         </div>
     </div>

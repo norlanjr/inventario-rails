@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :articles
+  
+  resources :providers
 =begin
    Todas esta son acciones "CRUD"
    get "/articles"

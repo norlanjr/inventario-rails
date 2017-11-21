@@ -1,6 +1,11 @@
-<h1>Hola mundo</h1>
-<% ["hola","mundo","php","AA"].each do|numero|%>
+<% if user_signed_in?%>
+<h1>Bienvenido Sistema</h1>
+<br />
+<h2><%= current_user.email%></h2>
+<%end%>
+
+<!--<% ["hola","mundo","php","AA"].each do|numero|%>
 <p>Numero :<%= numero%></p>
 
-<%end%>
+<%end%>!-->
 

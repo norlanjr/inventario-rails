@@ -1,0 +1,40 @@
+<h1>Proveedores</h1>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Telefono</th>
+            <th>Empresa</th>
+            <th>Ruc </th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @provider.each do|provider| %>
+        <tr>
+            <td><%= provider.id%></td>
+            <td><%= provider.nombre %></td>
+            <td><%= provider.telefono%></td>
+            <td><%= provider.empresa %></td>
+            <td><%= provider.ruc_empresa %></td>
+            <td> 
+                <button type="button" class="btn btn-danger"><%= link_to "Eliminar",provider,method: :delete%></button>
+                <button type="button" class="btn btn-danger"><%= link_to "Editar",edit_provider_path(provider.id)%></button>
+            </td>
+             
+
+        </tr>
+        <%end%>
+                <!--Donde cramos columna por cada onjeto agregamos unos link
+                ,ademas resive el parametro del id clinete
+                para coñocar las url colocamos unos tag !-->
+    </tbody>
+</table>
+<div style="width:7%;margin:0%;">
+    <div   class="field"> 
+        <div class=" btn be-red white ">
+            <%= link_to "Nuevo",new_provider_path%>
+        </div>
+    </div>
+</div>

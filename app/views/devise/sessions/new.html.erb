@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row" id="pwd-container">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <section class="login-form">
+        <form method="post" action="#" role="login">
+          <h2>Log in</h2>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            
+              <%= f.label :email %>
+                <br />
+               <%= f.email_field :email, autofocus: true ,type:"email",class:"form-control input-lg" %>
+                <%= f.label :password %>
+                <br />
+                <%= f.password_field :password, autocomplete: "off",type:"password" ,class:"form-control input-lg" %>
+            
+            <div class="pwstrength_viewport_progress"></div>
+
+            <% if devise_mapping.rememberable? -%>
+              <div class="field">
+                <%= f.check_box :remember_me %>
+                  <%= f.label :remember_me %>
+              </div>
+              <% end -%>
+                <button type="submit" name="go" class="btn btn-lg btn-primary btn-block">Log in</button>
+
+
+                <% end %>
+
+                  <%= render "devise/shared/links" %>
+        </form>
+
+      </section>
+
+
+
+    </div>
+  </div>
+</div>
