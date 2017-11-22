@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @entry.user %>
+</p>
+
+<p>
+  <strong>Provider:</strong>
+  <%= @entry.provider %>
+</p>
+
+<p>
+  <strong>Total:</strong>
+  <%= @entry.total %>
+</p>
+<h3>Form para Agregar articulos A compra</h3>
+<%= render "details/form"%>
+
+
+<%= link_to 'Edit', edit_entry_path(@entry) %> |
+<%= link_to 'Back', entries_path %>
+<p id="notice"><%= notice %></p>
+
+<h1>Detale De Cada Articulo que se va a gregando</h1>
+
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>Articulo</th>
+      <th>cantidad</th>
+      <th>Precio U</th>
+      <th>Descuentol</th>
+      <th>sub total</th>
+      <th>Total</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @entry.details.each do |entry| %>
+      <tr>
+        <td><%= entry.article_id %></td>
+        <td><%= entry.cantidad%></td>
+        <td><%= entry.precio %></td>
+        <td><%= entry.descuneto %></td>
+        <td><%= entry.sub_total %></td>
+        <td><%= entry.total %></td>
+        <td>
+          <button type="button" class="btn btn-danger">Eliminar(sin accion)</button>
+
+
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

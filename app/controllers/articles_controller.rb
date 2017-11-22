@@ -1,25 +1,28 @@
 class ArticlesController < ApplicationController
     # Aesta ruta se accede con el verbo >GET /articles y el pack articles
+    before_action :authenticate_user!, except: [:show,:index]
+    before_action :set_article, except: [:index,:new,:create]
     def index
         # Va devolver todos los registros
         @articles = Article.all
+
         
     end
     #GET/articles/:id
     def show
         # Show va a encontrar un registro por su id
-        @article = Article.find(params[:id])
+
     end
     def new
         @article = Article.new
         
     end
     def edit
-        @article = Article.find(params[:id])
+
     end
     #POST /articlesse accede por ,edio dde un post
     def create
-        @article =Article.new(article_params)
+        @article = current_user.articles.new(article_params)
 
         if @article.save
         redirect_to @article 
@@ -28,13 +31,13 @@ class ArticlesController < ApplicationController
         end
     end
     def destroy
-        @article = Article.find(params[:id])
+        
         @article.destroy
         redirect_to articles_path
         # Cambio
     end
     def update
-        @article = Article.find(params[:id])
+        
         if @article.update(article_params)
             redirect_to @article
         else
@@ -43,6 +46,12 @@ class ArticlesController < ApplicationController
 
     end
     private
+    def set_article
+        @article = Article.find(params[:id])
+    end
+    #def validate_user
+        #redirect_to new_user_session_path, notice:"Sorry,I need Login in"
+    #end
     def article_params
         params.require(:article).permit(:nombre,:descripcion,:precio,:precio2,:costo)
     end

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Compras</h1>
+
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>N°Compra</th>
+      <th>User</th>
+      <th>Proveedor</th>
+      <th>Total</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @entries.each do |entry| %>
+      <tr>
+        <td><%= entry.id %></td>
+        <td><%= entry.user %></td>
+        <td><%= entry.provider %></td>
+        <td><%= entry.total %></td>
+        <td>
+          <button type="button" class="btn btn-danger"><%= link_to 'Show', entry %></button>
+          <button type="button" class="btn btn-danger"><%= link_to 'Edit', edit_entry_path(entry) %></button>
+          <button type="button" class="btn btn-danger"><%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<button  type="submit" class="btn btn-lg btn-primary"><%= link_to 'Nueva', new_entry_path %></button>

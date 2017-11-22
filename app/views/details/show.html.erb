@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Article:</strong>
+  <%= @detail.article %>
+</p>
+
+<p>
+  <strong>Cantidad:</strong>
+  <%= @detail.cantidad %>
+</p>
+
+<p>
+  <strong>Precio:</strong>
+  <%= @detail.precio %>
+</p>
+
+<p>
+  <strong>Descuneto:</strong>
+  <%= @detail.descuneto %>
+</p>
+
+<p>
+  <strong>Sub total:</strong>
+  <%= @detail.sub_total %>
+</p>
+
+<p>
+  <strong>Total:</strong>
+  <%= @detail.total %>
+</p>
+<%= link_to 'Edit', edit_detail_path(@detail) %> |
+<%= link_to 'Back', details_path %>

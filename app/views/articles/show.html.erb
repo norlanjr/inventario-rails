@@ -1,5 +1,3 @@
-
-
 <form>
     <h1>Articulo Creado </h1>
     <div class="form-group">
@@ -8,17 +6,17 @@
             <li class="list-group-item">
                 <%= @article.nombre%>
             </li>
-            
+
         </div>
         <div class="form-group" style="width:80%;margin:0% auto;">
             <h3>Descripcion:</h3>
             <li class="list-group-item">
                 <%= @article.descripcion%>
             </li>
-           
+
         </div>
         <div style="width:80%;margin:0% auto;">
-            <h3 >Precio:</h3>
+            <h3>Precio:</h3>
             <li class="list-group-item">
                 <%= @article.precio%>
             </li>
@@ -35,6 +33,15 @@
                 <%= @article.costo%>
             </li>
         </div>
-    </div>
 
+        <div style="width:80%;margin:0% auto;">
+            <h3>USER:</h3>
+            <% unless @article.user.nil? %>
+            <li class="list-group-item">
+                <%= @article.user.email%>
+            </li>
+            <%end%>
+        </div>
+
+    </div>
 </form>

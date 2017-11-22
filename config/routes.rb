@@ -1,4 +1,19 @@
 Rails.application.routes.draw do
+  
+
+  
+  resources :purchases
+  resources :entries do
+    resources :details
+  end
+  #Utlizams los Recursos Compartidos 
+  #detalle venta se convierte en sub recursis de la venntas
+  #end de los Recursos Compartidos
+
+  
+  
+  
+  
   devise_for :users
   resources :articles
   
