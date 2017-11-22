@@ -1,13 +1,17 @@
 <p id="notice"><%= notice %></p>
+<p>
+  <strong>N°Compra:</strong>
+  <%= @entry.id %>
+</p>
 
 <p>
   <strong>User:</strong>
-  <%= @entry.user %>
+  <%= @entry.user.email %>
 </p>
 
 <p>
   <strong>Provider:</strong>
-  <%= @entry.provider %>
+  <%= @entry.provider.nombre %>
 </p>
 
 <p>
