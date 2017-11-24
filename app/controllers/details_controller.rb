@@ -1,24 +1,22 @@
 class DetailsController < ApplicationController
-  before_action :set_detail, only: [:show, :edit, :update, :destroy]
+  before_action :set_detail, only: [:update, :destroy]
+  #el id entry, va a estar  por :set_entry
+  #por medio de este tenemos acceso al recurso padre por de :entry_id
   before_action :set_entry
+  before_action :set_article
 
-  # GET /details
-  # GET /details.json
+
   def index
-    @details = Detail.all
+    #@details = Detail.all
   end
 
-  # GET /details/1
-  # GET /details/1.json
   def show
   end
 
-  # GET /details/new
   def new
-    @detail = Detail.new
+    #@detail = Detail.new
   end
 
-  # GET /details/1/edit
   def edit
   end
 
@@ -26,12 +24,15 @@ class DetailsController < ApplicationController
   # POST /details.json
   def create
     @detail = Detail.new(detail_params)
-    @detail.entry = @entry 
+    #Antes de que se guarde podemos decir
+    #@detail   .     entry =      @entry 
+    #que la Entrada o compra es el de la URLS"entries/4")
+    @detail.entry = @entry
 
     respond_to do |format|
       if @detail.save
-        format.html { redirect_to @detail.entry, notice: 'Detail was successfully created.' }
-        format.json { render :show, status: :created, location: @detail }
+        format.html { redirect_to @detail.entry, notice: 'Se Agrego ÉL articulo' }
+        format.json { render :show, status: :created, location: @detail.entry}
       else
         format.html { render :new }
         format.json { render json: @detail.errors, status: :unprocessable_entity }
@@ -64,6 +65,9 @@ class DetailsController < ApplicationController
   end
 
   private
+  def set_article
+    @article = Article.all
+  end
   def set_entry
     @entry = Entry.find(params[:entry_id])
   end
@@ -74,6 +78,6 @@ class DetailsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def detail_params
-      params.require(:detail).permit(:article_id, :cantidad, :precio, :descuneto, :sub_total, :total)
+      params.require(:detail).permit(:article_id, :cantidad,:descuneto)
     end
 end

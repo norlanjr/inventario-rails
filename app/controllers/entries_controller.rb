@@ -11,6 +11,7 @@ class EntriesController < ApplicationController
   # GET /entries/1
   # GET /entries/1.json
   def show
+    #inicializamos un nuevo comentario paraque se genere en _form de  detail
     @detail =Detail.new
   end
 

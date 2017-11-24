@@ -17,7 +17,7 @@ class DetailsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create detail" do
     assert_difference('Detail.count') do
-      post details_url, params: { detail: { abierta: @detail.abierta, article_id: @detail.article_id, cantidad: @detail.cantidad, descuneto: @detail.descuneto, precio: @detail.precio, sub_total: @detail.sub_total, total: @detail.total } }
+      post details_url, params: { detail: { article_id: @detail.article_id, cantidad: @detail.cantidad, descuneto: @detail.descuneto, precio: @detail.precio, sub_total: @detail.sub_total, total: @detail.total } }
     end
 
     assert_redirected_to detail_url(Detail.last)
@@ -34,7 +34,7 @@ class DetailsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update detail" do
-    patch detail_url(@detail), params: { detail: { abierta: @detail.abierta, article_id: @detail.article_id, cantidad: @detail.cantidad, descuneto: @detail.descuneto, precio: @detail.precio, sub_total: @detail.sub_total, total: @detail.total } }
+    patch detail_url(@detail), params: { detail: { article_id: @detail.article_id, cantidad: @detail.cantidad, descuneto: @detail.descuneto, precio: @detail.precio, sub_total: @detail.sub_total, total: @detail.total } }
     assert_redirected_to detail_url(@detail)
   end
 

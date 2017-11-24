@@ -1,61 +1,92 @@
-<p id="notice"><%= notice %></p>
-<p>
-  <strong>N°Compra:</strong>
-  <%= @entry.id %>
-</p>
+<div class="btn-group" role="group" aria-label="Basic example">
+</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @entry.user.email %>
-</p>
+<div class="row" style="padding-top:2%;">
+    <p id="notice">
+      <%= notice %>
+    </p>
+    <div class="col-xs-3">
+        <b class="">N°Compra </b>
+        <%= @entry.id %>
+    </div>
+    <div class="col-xs-3">
+        <b class="">User </b>
+        <%= @entry.user.email%>
+    </div>
+    <div class="col-xs-3">
+        <b class="">Proveedor</b>
+        <%= @entry.provider.nombre %>
+    </div>
+    <div class="col-xs-3">
+        <b class="">Total</b>
+        <%= @entry.total %>
+    </div>
+</div>
+  <hr>
+  <!--Por medio de este Render estamos teniendo accesos al formulario!-->
+ <div class="row">
+  <div class="col-xs-4">
+    <div class="box mdl-shadow--2dp" style="padding: 3%; background-color: rgb(255, 255, 255)">
+      <h3>Agregar articulos A compra</h3>
+  
+      <%= render "details/form"%>
+  
+        <p id="notice">
+          <%= notice %>
+        </p>
+    </div>
+  </div>
+  <hr>
+  
+  <div class="col-xs-8">
+    <h1>Articulos Agregados</h1>
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>Articulo</th>
+          <th>cantidad</th>
+          <th>Precio U</th>
+          <th>Descuentol</th>
+          <th>sub total</th>
+          <th>Total</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @entry.details.each do |entry| %>
+          <tr>
+            <td>
+              <%= entry.article.nombre%>
+            </td>
+            <td>
+              <%= entry.cantidad%>
+            </td>
+            <td>
+              <%= entry.article.precio %>
+            </td>
+            <td>
+              <%= entry.descuneto %>
+            </td>
+            <td><%= entry.sub_total= (entry.article.precio * entry.cantidad)%></td>
+            <td>
+              <%= entry.total %>
+            </td>
+            <td>
+              <button type="button" class="btn btn-danger">Eliminar(sin accion)</button>
 
-<p>
-  <strong>Provider:</strong>
-  <%= @entry.provider.nombre %>
-</p>
 
-<p>
-  <strong>Total:</strong>
-  <%= @entry.total %>
-</p>
-<h3>Form para Agregar articulos A compra</h3>
-<%= render "details/form"%>
+            </td>
+          </tr>
+          <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+ </div>
 
 
-<%= link_to 'Edit', edit_entry_path(@entry) %> |
-<%= link_to 'Back', entries_path %>
-<p id="notice"><%= notice %></p>
-
-<h1>Detale De Cada Articulo que se va a gregando</h1>
-
-<table class="table table-striped">
-  <thead class="thead-dark">
-    <tr>
-      <th>Articulo</th>
-      <th>cantidad</th>
-      <th>Precio U</th>
-      <th>Descuentol</th>
-      <th>sub total</th>
-      <th>Total</th>
-      <th>Acciones</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @entry.details.each do |entry| %>
-      <tr>
-        <td><%= entry.article_id %></td>
-        <td><%= entry.cantidad%></td>
-        <td><%= entry.precio %></td>
-        <td><%= entry.descuneto %></td>
-        <td><%= entry.sub_total %></td>
-        <td><%= entry.total %></td>
-        <td>
-          <button type="button" class="btn btn-danger">Eliminar(sin accion)</button>
+        
 
 
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
+

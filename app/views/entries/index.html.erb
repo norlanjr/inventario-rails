@@ -17,11 +17,11 @@
     <% @entries.each do |entry| %>
       <tr>
         <td><%= entry.id %></td>
-        <td><%= entry.user %></td>
-        <td><%= entry.provider %></td>
+        <td><%= entry.user.email %></td>
+        <td><%= entry.provider.nombre%></td>
         <td><%= entry.total %></td>
         <td>
-          <button type="button" class="btn btn-danger"><%= link_to 'Show', entry %></button>
+          <button type="button" class="btn btn-danger"><%= link_to 'Detalle', entry %></button>
           <button type="button" class="btn btn-danger"><%= link_to 'Edit', edit_entry_path(entry) %></button>
           <button type="button" class="btn btn-danger"><%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %></button>
 

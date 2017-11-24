@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   resources :purchases
   resources :entries do
-    resources :details
+    resources :details, only: [:create,:destroy, :update]
   end
   #Utlizams los Recursos Compartidos 
   #detalle venta se convierte en sub recursis de la venntas
