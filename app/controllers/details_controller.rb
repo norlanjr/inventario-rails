@@ -28,9 +28,14 @@ class DetailsController < ApplicationController
     #@detail   .     entry =      @entry 
     #que la Entrada o compra es el de la URLS"entries/4")
     @detail.entry = @entry
+    sub_total = @detail.cantidad * @detail.article.precio
+    @detail.sub_total = sub_total
+    
+    # Sumar el subtotal al total de la factura
+    @entry.total = @entry.total + sub_total
 
     respond_to do |format|
-      if @detail.save
+      if @detail.save && @entry.save
         format.html { redirect_to @detail.entry, notice: 'Se Agrego ÉL articulo' }
         format.json { render :show, status: :created, location: @detail.entry}
       else
@@ -59,7 +64,7 @@ class DetailsController < ApplicationController
   def destroy
     @detail.destroy
     respond_to do |format|
-      format.html { redirect_to @entry, notice: 'Detail was successfully destroyed.' }
+      format.html { redirect_to details_path, notice: 'Detail was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

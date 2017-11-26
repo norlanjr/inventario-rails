@@ -24,14 +24,14 @@
 
     <div lass="form-control">
       <%= form.label :cantidad %>
-        <%= form.text_field :cantidad, id: :detail_cantidad %>
+        <%= form.number_field :cantidad, id: :detail_cantidad %>
     </div>
 
 
 
     <div lass="form-control">
       <%= form.label :descuneto %>
-        <%= form.text_field :descuneto, id: :detail_descuneto %>
+        <%= form.number_field :descuneto, id: :detail_descuneto %>
     </div>
     <div class="actions">
       <%= form.submit "Agregar Articulo",class:"btn btn-primary "%>

@@ -2,9 +2,6 @@
 </div>
 
 <div class="row" style="padding-top:2%;">
-    <p id="notice">
-      <%= notice %>
-    </p>
     <div class="col-xs-3">
         <b class="">N°Compra </b>
         <%= @entry.id %>
@@ -26,7 +23,7 @@
   <!--Por medio de este Render estamos teniendo accesos al formulario!-->
  <div class="row">
   <div class="col-xs-4">
-    <div class="box mdl-shadow--2dp" style="padding: 3%; background-color: rgb(255, 255, 255)">
+    <div class="box mdl-shadow--2dp" style="padding: 3%; background-color: rgb(234, 241, 241)">
       <h3>Agregar articulos A compra</h3>
   
       <%= render "details/form"%>
@@ -48,7 +45,6 @@
           <th>Precio U</th>
           <th>Descuentol</th>
           <th>sub total</th>
-          <th>Total</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -67,13 +63,10 @@
             <td>
               <%= entry.descuneto %>
             </td>
-            <td><%= entry.sub_total= (entry.article.precio * entry.cantidad)%></td>
+            <td><%= entry.sub_total%></td>
             <td>
-              <%= entry.total %>
-            </td>
-            <td>
-              <button type="button" class="btn btn-danger">Eliminar(sin accion)</button>
-
+              <button type="button" class="btn btn-danger"><%= link_to 'Eliminar',[@entry,@detail], method: :delete, data: { confirm: 'Are you sure?' } %></button>
+                                                              
 
             </td>
           </tr>
