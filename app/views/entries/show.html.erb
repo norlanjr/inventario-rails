@@ -49,24 +49,25 @@
         </tr>
       </thead>
       <tbody>
-        <% @entry.details.each do |entry| %>
+      <%# Aqui estás iterando los detalles, solo es un cambio de nombre de la variable, no afecta en nada pero lo cambio para evitar las confusiones %>
+        <% @entry.details.each do |detail| %>
           <tr>
             <td>
-              <%= entry.article.nombre%>
+              <%= detail.article.nombre%>
             </td>
             <td>
-              <%= entry.cantidad%>
+              <%= detail.cantidad%>
             </td>
             <td>
-              <%= entry.article.precio %>
+              <%= detail.article.precio %>
             </td>
             <td>
-              <%= entry.descuneto %>
+              <%= detail.descuneto %>
             </td>
-            <td><%= entry.sub_total%></td>
+            <td><%= detail.sub_total%></td>
             <td>
-              <button type="button" class="btn btn-danger"><%= link_to 'Eliminar',[@entry,@detail], method: :delete, data: { confirm: 'Are you sure?' } %></button>
-                                                              
+            <%# En este caso queres eliminar nada mas eliminar el detalle %>
+              <%= link_to 'Eliminar', [@entry,detail], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>                                                
 
             </td>
           </tr>

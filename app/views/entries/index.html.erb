@@ -21,9 +21,9 @@
         <td><%= entry.provider.nombre%></td>
         <td><%= entry.total %></td>
         <td>
-          <button type="button" class="btn btn-danger"><%= link_to 'Detalle', entry %></button>
-          <button type="button" class="btn btn-danger"><%= link_to 'Edit', edit_entry_path(entry) %></button>
-          <button type="button" class="btn btn-danger"><%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+          <%= link_to 'Detalle', entry, class: "btn btn-info"%>
+          <%= link_to 'Edit', edit_entry_path(entry), class: "btn btn-secondary" %>
+          <%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
 
         </td>
       </tr>
