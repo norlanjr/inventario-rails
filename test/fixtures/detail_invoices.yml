@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bill: one
+  article: one
+  cantidad: 9.99
+  sub_total: 9.99
+
+two:
+  bill: two
+  article: two
+  cantidad: 9.99
+  sub_total: 9.99

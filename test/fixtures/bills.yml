@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  client: one
+  estado: MyString
+  total: 9.99
+  saldo: 9.99
+  fecha_limite: 
+
+two:
+  user: two
+  client: two
+  estado: MyString
+  total: 9.99
+  saldo: 9.99
+  fecha_limite: 

@@ -2,7 +2,15 @@ Rails.application.routes.draw do
   
 
   
+  resources :payments
+  
+  resources :bills do
+    resources :detail_invoices, only: [:create,:destroy, :update]
+  end
+  
+  resources :clients
   resources :purchases
+
   resources :entries do
     resources :details, only: [:create,:destroy, :update]
   end

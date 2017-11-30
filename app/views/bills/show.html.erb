@@ -1,0 +1,90 @@
+<div class="row" style="padding-top:2%;">
+  <div class="col-xs-3">
+    <b>N°Factura:</b>
+    <%= @bill.id %>
+  </div>
+    <div class="col-xs-3">
+      <b>Vendedor:</b>
+      <%= @bill.user.email%>
+    </div>
+    <div class="col-xs-3">
+      <b>Cliente:</b>
+      <%= @bill.client.nombre %>
+    </div>
+
+  <div class="col-xs-3">
+    <b>Estado:</b>
+    <%= @bill.estado %>
+  </div>
+
+  <div class="col-xs-3">
+    <b>Total:</b>
+     <%= @bill.total %>
+  </div>
+  <div class="col-xs-3">
+    <b>Saldo:</b>
+    <%= @bill.saldo %>
+  </div>
+  <div class="col-xs-3">
+    <b>Fecha limite:</b>
+    <%= @bill.fecha_limite %>
+  </div>
+  </div>
+  <div class="btn-group" role="group" aria-label="Basic example">
+    </div>
+
+
+<div class="row">
+    <div class="col-xs-4">
+      <div class="box mdl-shadow--2dp" style="padding: 3%; background-color: rgb(234, 241, 241)">
+        <h3>Agregar articulos A compra</h3>
+    
+        <%= render "detail_invoices/form"%>
+    
+          <p id="notice">
+            <%= notice %>
+          </p>
+      </div>
+    </div>
+    <hr>
+<div class="col-xs-8">
+  <h1>Articulos Agregados</h1>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>Articulo</th>
+        <th>cantidad</th>
+        <th>Precio U</th>
+        <th>sub total</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%# Aqui estás iterando los detalles, solo es un cambio de nombre de la variable, no afecta en nada pero lo cambio para evitar las confusiones %>
+        <% @bill.detail_invoice.each do |detail| %>
+          <tr>
+            <td>
+              <%= detail.article.nombre%>
+            </td>
+            <td>
+              <%= detail.cantidad%>
+            </td>
+            <td>
+              <%= detail.article.precio %>
+            </td>
+            <td>
+              <%= detail.sub_total%>
+            </td>
+            <td>
+              <%# En este caso queres eliminar nada mas eliminar el detalle %>
+              <%= link_to 'Eliminar', [@bill,detail], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>                                                
+    
+            </td>
+          </tr>
+          <% end %>
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
+

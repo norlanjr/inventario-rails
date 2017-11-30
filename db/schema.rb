@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171122160206) do
+ActiveRecord::Schema.define(version: 20171129050634) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "nombre"
@@ -22,6 +22,40 @@ ActiveRecord::Schema.define(version: 20171122160206) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_articles_on_user_id"
+  end
+
+  create_table "bills", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.bigint "client_id"
+    t.string "estado"
+    t.decimal "total", precision: 10
+    t.decimal "saldo", precision: 10
+    t.datetime "fecha_limite"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_bills_on_client_id"
+    t.index ["user_id"], name: "index_bills_on_user_id"
+  end
+
+  create_table "clients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "nombre"
+    t.string "cedula"
+    t.integer "telefono"
+    t.string "direccion"
+    t.decimal "credito", precision: 10
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "detail_invoices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "bill_id"
+    t.bigint "article_id"
+    t.decimal "cantidad", precision: 10
+    t.decimal "sub_total", precision: 10
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_detail_invoices_on_article_id"
+    t.index ["bill_id"], name: "index_detail_invoices_on_bill_id"
   end
 
   create_table "details", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -46,6 +80,14 @@ ActiveRecord::Schema.define(version: 20171122160206) do
     t.datetime "updated_at", null: false
     t.index ["provider_id"], name: "index_entries_on_provider_id"
     t.index ["user_id"], name: "index_entries_on_user_id"
+  end
+
+  create_table "payments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "bill_id"
+    t.decimal "cantidad", precision: 10
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bill_id"], name: "index_payments_on_bill_id"
   end
 
   create_table "providers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -95,10 +137,15 @@ ActiveRecord::Schema.define(version: 20171122160206) do
   end
 
   add_foreign_key "articles", "users"
+  add_foreign_key "bills", "clients"
+  add_foreign_key "bills", "users"
+  add_foreign_key "detail_invoices", "articles"
+  add_foreign_key "detail_invoices", "bills"
   add_foreign_key "details", "articles"
   add_foreign_key "details", "entries"
   add_foreign_key "entries", "providers"
   add_foreign_key "entries", "users"
+  add_foreign_key "payments", "bills"
   add_foreign_key "purchase_details", "articles"
   add_foreign_key "purchase_details", "purchases"
   add_foreign_key "purchases", "providers"

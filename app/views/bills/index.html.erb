@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Factura_Venta</h1>
+
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>User</th>
+      <th>Client</th>
+      <th>Estado</th>
+      <th>Total</th>
+      <th>Saldo</th>
+      <th>Fecha limite</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bills.each do |bill| %>
+      <tr>
+        <td><%= bill.user.email %></td>
+        <td><%= bill.client.nombre %></td>
+        <td><%= bill.estado %></td>
+        <td><%= bill.total %></td>
+        <td><%= bill.saldo %></td>
+        <td><%= bill.fecha_limite %></td>
+        <td>
+          <%= link_to 'Show', bill ,class: "btn btn-info"%>
+          <%= link_to 'Edit', edit_bill_path(bill), class: "btn btn-danger" %>
+          <%= link_to 'Destroy', bill, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-danger"%>
+        </td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bill', new_bill_path ,class: "btn btn-primary"%>
