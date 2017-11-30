@@ -26,11 +26,8 @@
     <%= form.text_field :total, id: :bill_total %>
   </div>
   <div class="field">
-      <%= form.label :estado,"Contado",:value => "contado" %>
-      <%= form.radio_button :bill_estado,true%>
-      <%= form.label :estado,"Credito",:value => "credito" %>
-      <%= form.radio_button :bill_estado,false %>
-    </div>
+    <%= form.select :estado, options_for_select(["Contado", "contado"], ["Crédito", "credito"]) %>
+  </div>
 
   <div class="actions">
     <%= form.submit %>
