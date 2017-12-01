@@ -52,6 +52,7 @@
   <table class="table table-striped">
     <thead class="thead-dark">
       <tr>
+
         <th>Articulo</th>
         <th>cantidad</th>
         <th>Precio U</th>
@@ -60,9 +61,11 @@
       </tr>
     </thead>
     <tbody>
-      <%# Aqui estás iterando los detalles, solo es un cambio de nombre de la variable, no afecta en nada pero lo cambio para evitar las confusiones %>
+      <ul id="detail_invoices-box" >
+              <%# Aqui estás iterando los detalles, solo es un cambio de nombre de la variable, no afecta en nada pero lo cambio para evitar las confusiones %>
         <% @bill.detail_invoice.each do |detail| %>
           <tr>
+
             <td>
               <%= detail.article.nombre%>
             </td>
@@ -82,6 +85,8 @@
             </td>
           </tr>
           <% end %>
+      </ul>
+
     </tbody>
   </table>
 </div>

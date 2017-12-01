@@ -7,8 +7,8 @@
             <th>Nombre</th>
             <th>Descripcion</th>
             <th>Precio</th>
-            <th>Precio2</th>
             <th>Costo</th>
+            <th>% Gan</th>
             <th>User</th>
             <th>Acciones</th>
         </tr>
@@ -20,8 +20,8 @@
             <td><%= article.nombre %></td>
             <td><%= article.descripcion %></td>
             <td><%= article.precio %></td>
-            <td><%= article.precio2 %></td>
             <td><%= article.costo %></td>
+            <td><%= article.ganancia %></td>
             <% unless article.user.nil? %>
             <td><%= article.user.email %></td>
             <%end%>

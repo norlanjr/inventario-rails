@@ -2,7 +2,7 @@
 
 
 
-<%= form_for([@bill,@detail_invoice]) do |form| %>
+<%= form_for([@bill,@detail_invoice], remote: true, html: {id: "detail_invoices-form", :"data-type" =>"json"}) do |form| %>
   <% if @detail_invoice.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@detail_invoice.errors.count, "error") %> prohibited this detail_invoice from being saved:</h2>

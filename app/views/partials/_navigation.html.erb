@@ -1,27 +1,29 @@
 <header>
-        <nav class="be-red white large-padding">
-          <ul class="no-list row center-xs middle-xs"> 
-            <li class="col-md">
-              <h1 class="no-margin" id="logo" ><%= link_to "Inicio",root_path %></h1>
-              
-            </li>
-            <li class="col-md"><%=link_to "New-Aticulo",new_article_path%></li>
-          </li>
-          <li class="col-md">Reportes</li>
-          <% if user_signed_in? %>
+  <nav class="be-red white large-padding">
+    <ul class="no-list row center-xs middle-xs">
+      <li class="col-md">
+        <h1 class="no-margin" id="logo">
+          <%= link_to "Inicio",root_path %>
+        </h1>
+      </li>
+      <li class="col-md">
+        <%=link_to "Articulos",articles_path%>
+      </li>
+      <li class="col-md">
+        <%=link_to "Facturas",bills_path%>
+      </li>
+      <% if user_signed_in? %>
+        <li class="col-md">
+          <%=link_to "Cerrar Sesion", destroy_user_session_path, method: :delete %>
+        </li>
+        <%else%>
           <li class="col-md">
-            <%=link_to "Cerrar Sesion", destroy_user_session_path, method: :delete %>
-          </li>
-          <%else%>
-          <li class="col-md">
-              <%=link_to "Iniciar Sesion", new_user_session_path%>
+            <%=link_to "Iniciar Sesion", new_user_session_path%>
           </li>
           <li class="col-md">
-              <%=link_to "Crear Cuenta", new_user_registration_path%>
+            <%=link_to "Crear Cuenta", new_user_registration_path%>
           </li>
-
           <%end%>
-          
-          </ul>
-        </nav>
-      </header>
+    </ul>
+  </nav>
+</header>

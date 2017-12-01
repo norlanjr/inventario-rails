@@ -1,5 +1,5 @@
 class DetailInvoicesController < ApplicationController
-  before_action :set_detail_invoice, only: [:update, :destroy]
+  before_action :set_detail_invoice, only: [:update, :destroy,:show]
   before_action :set_bill
   before_action :set_article
 
@@ -28,9 +28,14 @@ class DetailInvoicesController < ApplicationController
   def create
     @detail_invoice = DetailInvoice.new(detail_invoice_params)
     @detail_invoice.bill = @bill
+    sub_total = @detail_invoice.cantidad * @detail_invoice.article.precio
+    @detail_invoice.sub_total = sub_total
+    
+    # Sumar el subtotal al total de la factura
+    @bill.total = @bill.total + sub_total
 
     respond_to do |format|
-      if @detail_invoice.save
+      if @detail_invoice.save && @bill.save
         format.html { redirect_to @detail_invoice.bill, notice: 'Detail invoice was successfully created.' }
         format.json { render :show, status: :created, location: @detail_invoice.bill}
       else
