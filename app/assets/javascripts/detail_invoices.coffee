@@ -3,10 +3,10 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 
-$(document).on "ajax:success", "form#detail_invoices-form", (ev,data)->
+$(document).on "ajax:success", "form#detail_invoices-form",(ev,data) ->
   console.log data
-  $(this).find("textarea").val("")
-  $("#detail_invoices-box").append("<tr> #{data.cantidad}</tr>")
-
-$(document).on "ajax:error", "form#detail_invoices-form", (ev,data)->
-  console.log data
+  $(this).find("textarea").val("");
+  $("#detail_invoices-box").append("<td>#{data.cantidad}</td>");
+ 
+$(document).on "ajax:error", "form#comments-form",(ev,data) ->
+console.log data 

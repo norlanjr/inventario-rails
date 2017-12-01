@@ -37,7 +37,7 @@
 <div class="row">
     <div class="col-xs-4">
       <div class="box mdl-shadow--2dp" style="padding: 3%; background-color: rgb(234, 241, 241)">
-        <h3>Agregar articulos A compra</h3>
+        <h3>Agregar articulos A Factura</h3>
     
         <%= render "detail_invoices/form"%>
     
@@ -61,10 +61,10 @@
       </tr>
     </thead>
     <tbody>
-      <ul id="detail_invoices-box" >
+      <ul id="detail_invoices-box">
               <%# Aqui estás iterando los detalles, solo es un cambio de nombre de la variable, no afecta en nada pero lo cambio para evitar las confusiones %>
         <% @bill.detail_invoice.each do |detail| %>
-          <tr>
+          <tr >
 
             <td>
               <%= detail.article.nombre%>
