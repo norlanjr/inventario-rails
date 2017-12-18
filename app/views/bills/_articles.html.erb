@@ -1,0 +1,41 @@
+  <h1>Articulos Agregados</h1>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+
+        <th>Articulo</th>
+        <th>cantidad</th>
+        <th>Precio U</th>
+        <th>sub total</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ul id="detail_invoices-box">
+              <%# Aqui estás iterando los detalles, solo es un cambio de nombre de la variable, no afecta en nada pero lo cambio para evitar las confusiones %>
+        <% @bill.detail_invoice.each do |detail| %>
+          <tr >
+
+            <td>
+              <%= detail.article.nombre%>
+            </td>
+            <td>
+              <%= detail.cantidad%>
+            </td>
+            <td>
+              <%= detail.article.precio %>
+            </td>
+            <td>
+              <%= detail.sub_total%>
+            </td>
+            <td>
+              <%# En este caso queres eliminar nada mas eliminar el detalle %>
+              <%= link_to 'Eliminar', [@bill,detail], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>                                                
+    
+            </td>
+          </tr>
+          <% end %>
+      </ul>
+
+    </tbody>
+  </table>
