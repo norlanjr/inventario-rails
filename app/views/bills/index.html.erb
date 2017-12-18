@@ -5,6 +5,7 @@
 <table class="table table-striped">
   <thead class="thead-dark">
     <tr>
+      <th>N° Fact</th>
       <th>User</th>
       <th>Client</th>
       <th>Estado</th>
@@ -18,6 +19,7 @@
   <tbody>
     <% @bills.each do |bill| %>
       <tr>
+        <td><%= bill.id %></td>
         <td><%= bill.user.email %></td>
         <td><%= bill.client.nombre %></td>
         <td><%= bill.estado %></td>
