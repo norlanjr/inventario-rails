@@ -7,10 +7,23 @@
         </h1>
       </li>
       <li class="col-md">
-        <%=link_to "Articulos",articles_path%>
+        <a href=""><%=link_to "Articulos",articles_path%></a>
+        
       </li>
       <li class="col-md">
         <%=link_to "Facturas",bills_path%>
+      </li>
+      <li class="col-md">
+        <%=link_to "Compras",entries_path%>
+      </li>
+      <li class="col-md">
+        <%=link_to "Proveedores",providers_path%>
+      </li>
+      <li class="col-md">
+        <%=link_to "Abonos",payments_path%>
+      </li>
+      <li class="col-md">
+        <%=link_to "Clientes",clients_path%>
       </li>
       <% if user_signed_in? %>
         <li class="col-md">

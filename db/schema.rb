@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171205225238) do
+ActiveRecord::Schema.define(version: 20180507232508) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "nombre"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20171205225238) do
     t.decimal "credito", precision: 10
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "deuda", precision: 10
   end
 
   create_table "detail_invoices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -135,6 +136,7 @@ ActiveRecord::Schema.define(version: 20171205225238) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "permission_level", default: 1
+    t.string "nombre"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

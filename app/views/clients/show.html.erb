@@ -24,6 +24,11 @@
   <strong>Credito:</strong>
   <%= @client.credito %>
 </p>
+<p>
+  <strong>Deuda_Total:</strong>
+
+  <%= @client.deuda %>
+</p>
 
 <%= link_to 'Edit', edit_client_path(@client) %> |
 <%= link_to 'Back', clients_path %>

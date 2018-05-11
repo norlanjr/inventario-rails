@@ -1,11 +1,10 @@
 <% if user_signed_in?%>
-<h1>Bienvenido Sistema</h1>
-<br />
-<h2><%= current_user.email%></h2>
-<%end%>
+    <h2>Bienvenido Sistema de Facturacion</h2>
+    <br />
+    <h4>Usuario :</h4>
+            <h6>
+                <%= current_user.email%>
+                <%= current_user.nombre%>
 
-<!--<% ["hola","mundo","php","AA"].each do|numero|%>
-<p>Numero :<%= numero%></p>
-
-<%end%>!-->
-
+            </h6>
+            <%end%>
