@@ -15,6 +15,7 @@ class PaymentsController < ApplicationController
   # GET /payments/new
   def new
     @payment = Payment.new
+    @bill = Bill.all
   end
 
   # GET /payments/1/edit
@@ -25,9 +26,12 @@ class PaymentsController < ApplicationController
   # POST /payments.json
   def create
     @payment = Payment.new(payment_params)
+    @bill = Bill.find(payment_params[:bill_id])
+
+    @bill.saldo -= @payment.cantidad      
 
     respond_to do |format|
-      if @payment.save
+      if @payment.save && @bill.save
         format.html { redirect_to @payment, notice: 'Payment was successfully created.' }
         format.json { render :show, status: :created, location: @payment }
       else
@@ -62,6 +66,7 @@ class PaymentsController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_payment
       @payment = Payment.find(params[:id])

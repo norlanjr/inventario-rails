@@ -24,16 +24,17 @@ class DetailsController < ApplicationController
   # POST /details.json
   def create
     @detail = Detail.new(detail_params)
-    #Antes de que se guarde podemos decir
-    #@detail   .     entry =      @entry 
-    #que la Entrada o compra es el de la URLS"entries/4")
+
     @detail.entry = @entry
+
     sub_total = @detail.cantidad * @detail.article.precio
+
     @detail.sub_total = sub_total
-    
-    # Sumar el subtotal al total de la factura
+
     @entry.total = @entry.total + sub_total
 
+
+    
     respond_to do |format|
       if @detail.save && @entry.save
         format.html { redirect_to @detail.entry, notice: 'Se Agrego ÉL articulo' }

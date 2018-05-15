@@ -7,12 +7,14 @@ class ArticlesController < ApplicationController
     def index
         # Va devolver todos los registros
         @articles = Article.all
+        
 
         
     end
     #GET/articles/:id
     def show
         # Show va a encontrar un registro por su id
+
 
     end
     def new
@@ -26,7 +28,6 @@ class ArticlesController < ApplicationController
     def create
         @article = current_user.articles.new(article_params)
 
-        @article.ganancia= (@article.precio - @article.costo)/@article.costo
 
 
 

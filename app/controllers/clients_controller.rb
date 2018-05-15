@@ -10,6 +10,8 @@ class ClientsController < ApplicationController
   # GET /clients/1
   # GET /clients/1.json
   def show
+
+
   end
 
   # GET /clients/new
@@ -25,6 +27,8 @@ class ClientsController < ApplicationController
   # POST /clients.json
   def create
     @client = Client.new(client_params)
+    @client.deuda = 0
+    @client.credito = 0
 
     respond_to do |format|
       if @client.save
@@ -69,6 +73,6 @@ class ClientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params
-      params.require(:client).permit(:nombre, :cedula, :telefono, :direccion, :credito)
+      params.require(:client).permit(:nombre, :cedula, :telefono,:direccion,:credito,:deuda)
     end
 end

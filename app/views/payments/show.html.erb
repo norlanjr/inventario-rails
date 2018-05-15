@@ -1,14 +1,23 @@
-<p id="notice"><%= notice %></p>
+<p id="notice">
+  <%= notice %>
+</p>
 
 <p>
   <strong>Bill:</strong>
-  <%= @payment.bill %>
+  <%= @payment.bill.id%>
 </p>
-
+<p>
+  <strong>Cliente:</strong>
+  <%= @payment.bill.client.nombre%>
+</p>
 <p>
   <strong>Cantidad:</strong>
   <%= @payment.cantidad %>
 </p>
+<p>
+  <strong>Saldo Anterior:</strong>
+  <%= @payment.bill.saldo%>
+</p>
 
 <%= link_to 'Edit', edit_payment_path(@payment) %> |
-<%= link_to 'Back', payments_path %>
+  <%= link_to 'Back', payments_path %>

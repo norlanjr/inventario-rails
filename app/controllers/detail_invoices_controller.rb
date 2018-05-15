@@ -33,6 +33,7 @@ class DetailInvoicesController < ApplicationController
 
     # Sumar el subtotal al total de la factura
     @bill.total = @bill.total + sub_total
+    @bill.saldo = @bill.total
 
     # unless = "a manos que..."
     # Si puede_comprar? retorna false se interrumple el evento
@@ -73,6 +74,8 @@ class DetailInvoicesController < ApplicationController
   # DELETE /detail_invoices/1.json
   def destroy
     @detail_invoice.destroy
+    @bill.total = @bill.total - @detail_invoice.sub_total
+    @bill.save
     respond_to do |format|
       format.html { redirect_to @detail_invoice.bill, notice: 'Detail invoice was successfully destroyed.' }
       format.json { head :no_content }

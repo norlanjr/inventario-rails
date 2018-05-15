@@ -1,5 +1,5 @@
-
-<h1>Articulos</h1>
+<h1>
+    Articulos</h1>
 <table class="table table-striped">
     <thead class="thead-dark">
         <tr>
@@ -15,37 +15,51 @@
     </thead>
     <tbody>
         <% @articles.each do|article| %>
-        <tr>
-            <td><%= article.id%></td>
-            <td><%= article.nombre %></td>
-            <td><%= article.descripcion %></td>
-            <td><%= article.precio %></td>
-            <td><%= article.costo %></td>
-            <td><%= article.ganancia %></td>
-            <% unless article.user.nil? %>
-            <td><%= article.user.email %></td>
-            <%end%>
-            <td> 
-                <button type="button" class="btn btn-danger"><%= link_to "Eliminar",article,method: :delete%></button>
-                <button type="button" class="btn btn-danger"><%= link_to "Editar",edit_article_path(article.id)%></button>
-            </td>
-             
+            <tr>
+                <td>
+                    <%= article.id%>
+                </td>
+                <td>
+                    <%= article.nombre %>
+                </td>
+                <td>
+                    <%= article.descripcion %>
+                </td>
+                <td>
+                    <%= article.precio %>
+                </td>
+                <td>
+                    <%= article.costo %>
+                </td>
+                <td>
+                    <%= article.ganancia %>
+                </td>
+                <% unless article.user.nil? %>
+                    <td>
+                        <%= article.user.email %>
+                    </td>
+                    <%end%>
+                        <td>
+                            <button type="button" class="btn btn-danger">
+                                <%= link_to "Eliminar",article,method: :delete%>
+                            </button>
+                            <button type="button" class="btn btn-danger">
+                                <%= link_to "Editar",edit_article_path(article.id)%>
+                            </button>
+                        </td>
 
-        </tr>
-        <%end%>
+
+            </tr>
+            <%end%>
                 <!--Donde cramos columna por cada onjeto agregamos unos link
                 ,ademas resive el parametro del id clinete
                 para coñocar las url colocamos unos tag !-->
     </tbody>
 </table>
 <div style="width:7%;margin:0%;">
-    <div   class="field"> 
+    <div class="field">
         <div class=" btn be-red white ">
             <%= link_to "Nuevo",new_article_path%>
         </div>
     </div>
 </div>
-
-
-    
-

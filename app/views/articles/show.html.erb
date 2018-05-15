@@ -6,14 +6,22 @@
             <li class="list-group-item">
                 <%= @article.nombre%>
             </li>
-
+    
         </div>
         <div class="form-group" style="width:80%;margin:0% auto;">
             <h3>Descripcion:</h3>
             <li class="list-group-item">
                 <%= @article.descripcion%>
             </li>
-
+    
+    
+        </div>
+    
+        <div style="width:80%;margin:0% auto;">
+            <h3>Costo:</h3>
+            <li class="list-group-item">
+                <%= @article.costo%>
+            </li>
         </div>
         <div style="width:80%;margin:0% auto;">
             <h3>Precio:</h3>
@@ -22,26 +30,27 @@
             </li>
         </div>
         <div style="width:80%;margin:0% auto;">
+            <h3>ganacia:</h3>
+            <li class="list-group-item">
+                <%= @article.ganancia%>
+            </li>
+        </div>
+        <div style="width:80%;margin:0% auto;">
             <h3>Precio2:</h3>
             <li class="list-group-item">
                 <%= @article.precio2%>
             </li>
         </div>
-        <div style="width:80%;margin:0% auto;">
-            <h3>Costo:</h3>
-            <li class="list-group-item">
-                <%= @article.costo%>
-            </li>
-        </div>
-
+    
+    
         <div style="width:80%;margin:0% auto;">
             <h3>USER:</h3>
             <% unless @article.user.nil? %>
-            <li class="list-group-item">
-                <%= @article.user.email%>
-            </li>
-            <%end%>
+                <li class="list-group-item">
+                    <%= @article.user.email%>
+                </li>
+                <%end%>
         </div>
-
+    
     </div>
 </form>

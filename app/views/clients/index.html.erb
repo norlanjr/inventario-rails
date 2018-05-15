@@ -25,9 +25,9 @@
         <td><%= client.direccion %></td>
         <td><%= client.credito %></td>
         <td>
-           <%= link_to 'Show', client,class: "btn btn-info" %>
-        <%= link_to 'Edit', edit_client_path(client),class: "btn btn-secondary"  %>
-        <%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Estas seguro?' } ,class: "btn btn-danger"%>
+           <%= link_to 'Estado', client,class: "btn btn-info" %>
+        <%= link_to 'Editar', edit_client_path(client),class: "btn btn-secondary"  %>
+        <%= link_to 'Eliminar', client, method: :delete, data: { confirm: 'Estas seguro?' } ,class: "btn btn-danger"%>
         </td>
        
       </tr>
