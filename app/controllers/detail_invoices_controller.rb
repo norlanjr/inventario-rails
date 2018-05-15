@@ -30,9 +30,19 @@ class DetailInvoicesController < ApplicationController
     @detail_invoice.bill = @bill
     sub_total = @detail_invoice.cantidad * @detail_invoice.article.precio
     @detail_invoice.sub_total = sub_total
-    
+
     # Sumar el subtotal al total de la factura
     @bill.total = @bill.total + sub_total
+
+    # unless = "a manos que..."
+    # Si puede_comprar? retorna false se interrumple el evento
+    # y se retorna un mensaje de alerta
+    unless puede_comprar?(@bill.client, @bill.total)
+      @detail_invoice.errors.add(:sub_total, :invalid, message: 'No tiene suficiente crédito para agregar este detalle')
+      return render json: {message: 'no se puede crear'}, status: 422
+    end
+
+    puts "ERRRORS:  #{@detail_invoice.errors.count}"
 
     respond_to do |format|
       if @detail_invoice.save && @bill.save
@@ -88,4 +98,9 @@ class DetailInvoicesController < ApplicationController
       params.require(:detail_invoice).permit(:article_id, :cantidad)
     end
 
+    def puede_comprar?(client, total_compra)
+      if client.queda_credito? && client.deuda < total_compra
+        return true
+      end
+    end
 end
