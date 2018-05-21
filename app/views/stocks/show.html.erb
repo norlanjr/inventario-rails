@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Article:</strong>
+  <%= @stock.article %>
+</p>
+
+<p>
+  <strong>Existencia:</strong>
+  <%= @stock.existencia %>
+</p>
+
+<p>
+  <strong>Existencia minima:</strong>
+  <%= @stock.existencia_minima %>
+</p>
+
+<%= link_to 'Edit', edit_stock_path(@stock) %> |
+<%= link_to 'Back', stocks_path %>

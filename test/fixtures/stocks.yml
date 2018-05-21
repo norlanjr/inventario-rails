@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  article: one
+  existencia: 9.99
+  existencia_minima: 9.99
+
+two:
+  article: two
+  existencia: 9.99
+  existencia_minima: 9.99

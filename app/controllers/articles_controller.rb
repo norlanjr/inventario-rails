@@ -27,12 +27,7 @@ class ArticlesController < ApplicationController
     #POST /articlesse accede por ,edio dde un post
     def create
         @article = current_user.articles.new(article_params)
-
-
-
-
-
-
+        
         if @article.save
         redirect_to @article 
         else 
@@ -62,7 +57,7 @@ class ArticlesController < ApplicationController
         #redirect_to new_user_session_path, notice:"Sorry,I need Login in"
     #end
     def article_params
-        params.require(:article).permit(:nombre,:descripcion,:precio,:costo)
+        params.require(:article).permit(:nombre,:descripcion,:precio,:costo,:cantidad)
     end
     
 end

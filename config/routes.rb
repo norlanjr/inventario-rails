@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   
  
   
+  resources :stocks
   resources :bills do
     resources :detail_invoices, only: [:create,:destroy, :update,:show]
     

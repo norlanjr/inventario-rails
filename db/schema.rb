@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180507232508) do
+ActiveRecord::Schema.define(version: 20180521232224) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "nombre"
@@ -23,6 +23,9 @@ ActiveRecord::Schema.define(version: 20180507232508) do
     t.bigint "user_id"
     t.string "state", default: "in_draft"
     t.decimal "ganancia", precision: 8, scale: 2
+    t.bigint "stock_id"
+    t.decimal "cantidad", precision: 10
+    t.index ["stock_id"], name: "index_articles_on_stock_id"
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
@@ -71,8 +74,10 @@ ActiveRecord::Schema.define(version: 20180507232508) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "entry_id"
+    t.bigint "stock_id"
     t.index ["article_id"], name: "index_details_on_article_id"
     t.index ["entry_id"], name: "index_details_on_entry_id"
+    t.index ["stock_id"], name: "index_details_on_stock_id"
   end
 
   create_table "entries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -122,6 +127,21 @@ ActiveRecord::Schema.define(version: 20180507232508) do
     t.index ["provider_id"], name: "index_purchases_on_provider_id"
   end
 
+  create_table "stocks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "article_id"
+    t.decimal "existencia", precision: 10
+    t.decimal "existencia_minima", precision: 10
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "bill_id"
+    t.bigint "entry_id"
+    t.bigint "detail_id"
+    t.index ["article_id"], name: "index_stocks_on_article_id"
+    t.index ["bill_id"], name: "index_stocks_on_bill_id"
+    t.index ["detail_id"], name: "index_stocks_on_detail_id"
+    t.index ["entry_id"], name: "index_stocks_on_entry_id"
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -141,6 +161,7 @@ ActiveRecord::Schema.define(version: 20180507232508) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "articles", "stocks"
   add_foreign_key "articles", "users"
   add_foreign_key "bills", "clients"
   add_foreign_key "bills", "users"
@@ -148,10 +169,15 @@ ActiveRecord::Schema.define(version: 20180507232508) do
   add_foreign_key "detail_invoices", "bills"
   add_foreign_key "details", "articles"
   add_foreign_key "details", "entries"
+  add_foreign_key "details", "stocks"
   add_foreign_key "entries", "providers"
   add_foreign_key "entries", "users"
   add_foreign_key "payments", "bills"
   add_foreign_key "purchase_details", "articles"
   add_foreign_key "purchase_details", "purchases"
   add_foreign_key "purchases", "providers"
+  add_foreign_key "stocks", "articles"
+  add_foreign_key "stocks", "bills"
+  add_foreign_key "stocks", "details"
+  add_foreign_key "stocks", "entries"
 end

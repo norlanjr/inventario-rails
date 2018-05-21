@@ -57,7 +57,7 @@ class BillsController < ApplicationController
 
   # DELETE /bills/1
   # DELETE /bills/1.json
-  def destroy
+  def destroy    
     @bill.destroy
     respond_to do |format|
       format.html { redirect_to bills_url, notice: 'Bill was successfully destroyed.' }
